@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package modelo;
 
 import java.io.Serializable;
@@ -18,8 +23,12 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+/**
+ *
+ * @author Kleyson
+ */
 @Entity
-@Table(name = "artista", catalog = "grafoestilomusical", schema = "")
+@Table(name = "artista", catalog = "graforelacional", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Artista.findAll", query = "SELECT a FROM Artista a"),
@@ -101,7 +110,7 @@ public class Artista implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.Artista[ idArtista=" + idArtista + " ]";
+        return "capturahtml.Artista[ idArtista=" + idArtista + " ]";
     }
     
 }

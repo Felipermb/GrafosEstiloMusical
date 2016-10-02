@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dao;
 
 import dao.exceptions.NonexistentEntityException;
@@ -18,10 +13,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import modelo.Artista;
 
-/**
- *
- * @author Kleyson
- */
 public class ArtistaJpaController implements Serializable {
 
     public ArtistaJpaController(EntityManagerFactory emf) {
@@ -31,6 +22,32 @@ public class ArtistaJpaController implements Serializable {
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
+    }
+
+    public Artista salvar(Artista artista) {
+        //Adiciona artista
+        EntityManager entityManager = emf.createEntityManager();
+        try {
+            entityManager.getTransaction().begin();
+            if (artista.getIdArtista() == null) {
+                entityManager.persist(artista);
+            } else {
+                artista = entityManager.merge(artista);
+            }
+            // Finaliza a transação.
+            entityManager.getTransaction().commit();
+        }catch(Exception x){
+            System.out.println("Duplicate");
+            Query query = entityManager.createQuery("SELECT a FROM Artista a WHERE a.nome = :nome", Artista.class);
+            query.setParameter("nome", artista.getNome());
+            //System.out.println(query.toString());
+            return (Artista) query.getSingleResult();
+        } 
+        finally {
+            entityManager.close();
+        }
+        return artista;
+
     }
 
     public void create(Artista artista) {
@@ -176,5 +193,5 @@ public class ArtistaJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }
