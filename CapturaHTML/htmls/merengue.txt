@@ -1,0 +1,1 @@
+<li><a href="/juan-luis-guerra/">Juan Luis Guerra</a></li>  <li><a href="/eddy-herrera/">Eddy Herrera</a></li>  <li><a href="/hector-acosta/">Hector Acosta</a></li>  <li><a href="/wilfrido-vargas/">Wilfrido Vargas</a></li>  <li><a href="/too-rosario/">Toño Rosario</a></li>  <li><a href="/milly-quezada/">Milly Quezada</a></li>  </ul>
